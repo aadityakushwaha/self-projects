@@ -1,5 +1,4 @@
 import getpass
-import pyttsx3 as tts
 #-----Global-Variables-Are-Defined-Here----
 minBalance = 11000
 globals()["balance"] = minBalance
@@ -95,15 +94,18 @@ def WithdrawMoney(balance):
 
     if withdrawAmount > balance :
         print("The amount you entered is greater than available balance\n")
-        login()
+        LoginOptions()
 
-    if withdrawResponse == "Y" or withdrawResponse == "y":
+    elif withdrawResponse == "Y" or withdrawResponse == "y":
         globals()["balance"] = balance - withdrawAmount
         CheckBalance()
         LoginOptions() 
     
+    elif withdrawResponse == "N" or withdrawResponse == "n":
+        LoginOptions()
+
     else:
-        login()
+        invalidInput()
 
 
 # Defining Change Email Function 
